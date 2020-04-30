@@ -1,6 +1,6 @@
 import choc, {set_content} from "https://rosuav.github.io/shed/chocfactory.js";
 import "https://cdn.jsdelivr.net/npm/comfy.js/dist/comfy.min.js"; const ComfyJS = window.ComfyJS;
-const {A, FORM, INPUT, LI} = choc;
+const {A, B, FORM, INPUT, LI} = choc;
 
 const params = new URLSearchParams(window.location.search);
 let channel = params.get("channel");
@@ -32,9 +32,16 @@ ComfyJS.onChat = ( user, message, flags, self, extra ) => {
 		return;
 	}
 	if (rewardid !== extra.customRewardId) return;
-	document.getElementById("people").appendChild(LI(user));
+	document.getElementById("people").appendChild(LI([B(user), ": " + message]));
 }
 
-//TODO: Mod-only command to initiate and clear things
+ComfyJS.onCommand = ( user, command, message, flags, extra ) => {
+	if ((flags.mod || flags.broadcaster) && command === params.get("advance"))
+	{
+		//Remove the first entry, leaving the rest
+		document.getElementById("people").firstElementChild.remove();
+	}
+	//TODO: 'Clear all' command?
+}
 
 if (channel) ComfyJS.Init(channel);
