@@ -1,1 +1,13 @@
 * {box-sizing: border-box;}
+
+.hidden {display: none;}
+
+#display {
+	margin: 0;
+	font-size: 36pt;
+	background: linear-gradient(#143, #bfe);
+	color: transparent;
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-stroke: 1px #077;
+}
