@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+<title>Sub/bits counter</title>
+<link rel=stylesheet href="osdrewards.css">
+<script type=module src="subsbits.js"></script>
+</head>
+<body>
+<p id=display><span id=count>0</span></p>
+<form method=get class=hidden>
+Fill out this form and submit, and then save the URL to use as a browser source.
+<table>
+<tr><td>Channel name:</td><td><input name=channel></td></tr>
+<tr><td><label><input type=checkbox name=tiervalue>Tiered subs are worth more</label></td></tr>
+<tr><td><label><input type=checkbox name=resubs>Include resubs</label></td></tr>
+</table>
+<input type=submit value="Get URL">
+</form>
+<p style="margin-top: 5em"><button type=button id=resetcount>Reset?</button></p>
+</body>
+</html>
