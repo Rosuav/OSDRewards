@@ -5,11 +5,14 @@ const {A, B, FORM, INPUT, LI} = choc;
 const params = new URLSearchParams(window.location.search);
 let channel = params.get("channel");
 if (!channel) {
-	DOM("#people").appendChild(LI(FORM([
-		"Enter your channel name: ",
-		INPUT({name: "channel"}),
-		INPUT({type: "submit", value: "Go!"}),
-	])));
+	set_content("#people", [
+		LI(FORM([
+			"Enter your channel name: ",
+			INPUT({name: "channel"}),
+			INPUT({type: "submit", value: "Go!"}),
+		])),
+		LI(A({href: "https://sikorsky.rosuav.com/listrewards"}, "Or click here to log in and list all rewards for your channel.")),
+	]);
 }
 
 let rewardid = params.get("rewardid");
